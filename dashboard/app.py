@@ -123,6 +123,7 @@ def bulk_upload():
                 username = row.get("Username")
                 domain = row.get("Domain")
                 platform = row.get("Platform", "").strip().lower()
+                email = f"{username}@{domain}"
                 script = "azure_onboard.py" if platform == "azure" else "google_onboard.py"
                 env = os.environ.copy()
                 env["ONBOARD_NAME"] = name
@@ -131,14 +132,11 @@ def bulk_upload():
 
                 try:
                     subprocess.run(["python", script], check=True, env=env)
-                    results.append(f"✅ {username}@{domain} via {platform}")
+                    results.append({"name": name, "email": email, "platform": platform, "success": True})
                 except subprocess.CalledProcessError:
-                    results.append(f"❌ {username}@{domain} failed")
+                    results.append({"name": name, "email": email, "platform": platform, "success": False})
 
-        for msg in results:
-            flash(msg, "info")
-
-        return redirect(url_for("bulk_upload"))
+        return render_template("bulk_results.html", results=results)
 
     return render_template("bulk_upload.html")
 
