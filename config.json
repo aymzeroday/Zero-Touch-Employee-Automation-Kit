@@ -1,0 +1,6 @@
+{
+  "default_password": "TempPass@123",
+  "groups": ["group-id-1", "group-id-2"],
+  "license_sku_id": "your-sku-guid",
+  "logo_url": "https://yourcompany.com/logo.png"
+}
