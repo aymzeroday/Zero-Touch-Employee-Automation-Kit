@@ -1,59 +1,157 @@
+# Zero-Touch Employee Automation Kit 🚀
 
-# 🛠️ Zero-Touch Employee Automation Kit
+A fully automated, cross-platform onboarding/offboarding system for Azure AD and Google Workspace — with Slack/Teams alerts, email notifications, a secure web dashboard, and bulk CSV upload support.
 
-Automate onboarding and offboarding across Azure AD, Google Workspace, Slack, and more. Ideal for IT & HR teams tired of repetitive account provisioning.
+## 🔧 Features
 
-## 🔍 Features
-
-✅ Azure AD user creation  
-✅ Assign Microsoft 365 licenses & groups  
-✅ Slack onboarding/offboarding alerts  
-✅ Welcome/Exit emails via Outlook or Gmail  
-✅ Supports Google Workspace (Pro)  
-✅ Extensible: Jira, GitHub, Notion, more
-
----
-
-## 🧩 Scripts Included
-
-| File              | Description                                       |
-|-------------------|---------------------------------------------------|
-| `azure_onboard.py`  | Creates user in Azure AD, assigns licenses         |
-| `azure_offboard.py` | Disables user, revokes licenses                   |
-| `slack_notify.py`   | Sends messages to manager/team                    |
-| `email_notify.py`   | Auto-emails welcome/exit message                  |
-| `config.json`       | Define user roles, groups, license templates      |
-| `main.py`           | Central runner – plug in any sequence             |
+✅ Azure AD onboarding & offboarding  
+✅ Google Workspace onboarding & offboarding  
+✅ Manual onboarding form (Web UI)  
+✅ Bulk CSV upload with per-user status  
+✅ Real-time Slack + Microsoft Teams alerts  
+✅ Email notifications (welcome & exit)  
+✅ Log viewer with color-coded results  
+✅ Secure Flask dashboard with login  
+✅ Environment-based config (.env + config.json)
 
 ---
 
-## ⚙️ Requirements
+## 🖼️ Screenshots
 
-- Python 3.10+
-- Access to Microsoft Graph API (Azure App with appropriate permissions)
-- Optional:
-  - Slack App Token
-  - Google Admin SDK access
-  - SMTP/Gmail for notifications
+- Dashboard Home  
+- Manual Form  
+- Bulk Upload  
+- Results Table  
+- Login Page  
+
+*(Add images in `assets/` and link here)*
 
 ---
 
-## 🚀 Quick Start
+## 📦 Folder Structure
+
+<!-- ```
+employee-automation-kit/
+├── main.py
+├── .env.example
+├── config.json
+├── requirements.txt
+├── azure_onboard.py
+├── azure_offboard.py
+├── google_onboard.py
+├── google_offboard.py
+├── email_notify.py
+├── notifier.py
+├── logs/
+│   └── automation.log
+├── templates/
+│   ├── welcome_email.html
+│   └── exit_email.html
+├── dashboard/
+│   ├── app.py
+│   ├── uploads/
+│   └── templates/
+│       ├── index.html
+│       ├── login.html
+│       ├── onboard.html
+│       ├── bulk_upload.html
+│       └── bulk_results.html
+``` -->
+
+---
+
+## ⚙️ Setup
+
+### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/yourname/employee-automation-kit.git
+git clone https://github.com/yourorg/employee-automation-kit.git
 cd employee-automation-kit
+```
+
+### 2. Install Requirements
+
+```bash
 pip install -r requirements.txt
+```
+
+### 3. Configure
+
+- Copy `.env.example` → `.env` and fill values  
+- Update `config.json` with Azure/GWS settings
+
+### 4. Run CLI or Dashboard
+
+#### CLI
+
+```bash
 python main.py
 ```
+
+#### Web Dashboard
+
+```bash
+cd dashboard
+python app.py
+```
+
 ---
 
-## 📞 Need Help?
+## 🛂 .env Configuration
 
-**Custom integrations, config, or enterprise setup?**  
-Email me: [aymzeroday@gmail.com](mailto:aymzeroday@gmail.com)  
-Or message me on [LinkedIn](https://linkedin.com/in/ahmad-yasser-b06636202)
+```env
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=StrongPass123
+SENDER_ADDRESS=it@example.com
+SLACK_WEBHOOK=https://hooks.slack.com/...
+TEAMS_WEBHOOK=https://outlook.office.com/webhook/...
+```
 
 ---
 
-> ⚠️ For security, always test in a sandbox tenant before deploying in production.
+## 🧠 config.json Example
+
+```json
+{
+  "default_password": "TempPass@123",
+  "groups": ["group-guid-1", "group-guid-2"],
+  "license_sku_id": "your-azure-license-guid",
+  "logo_url": "https://yourcompany.com/logo.png",
+  "google_service_account_file": "credentials.json",
+  "google_delegated_admin": "admin@yourcompany.com",
+  "google_domain": "yourcompany.com",
+  "google_org_unit": "/Employees"
+}
+```
+
+---
+
+## 📁 CSV Upload Format
+
+```csv
+Full Name,Username,Domain,Platform
+Alice Smith,asmith,example.com,azure
+Bob Jones,bjones,example.com,google
+```
+
+---
+
+## ✅ Next Up (Future Features)
+
+- Role-based onboarding templates  
+- Approval workflow  
+- Asset management tracking  
+- Slack command bot (e.g. `/onboard`)  
+- HRMS sync (BambooHR, Sheets, etc.)
+
+---
+
+## 📄 License
+
+MIT — built with love by Ahmad & ChatGPT
+
+---
+
+## 💬 Need Help?
+
+Open an issue or [contact me](mailto:you@example.com) if you’re stuck.
