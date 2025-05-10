@@ -148,10 +148,10 @@ Bob Jones,bjones,example.com,google
 
 ## 📄 License
 
-MIT — built with love by Ahmad & ChatGPT
+MIT — built with love by Ahmad.
 
 ---
 
 ## 💬 Need Help?
 
-Open an issue or [contact me](mailto:you@example.com) if you’re stuck.
+Open an issue or [contact me](mailto:aymzeroday@gmail.com) if you’re stuck.
