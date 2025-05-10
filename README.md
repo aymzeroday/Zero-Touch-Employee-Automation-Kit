@@ -30,7 +30,7 @@ A fully automated, cross-platform onboarding/offboarding system for Azure AD and
 
 ## 📦 Folder Structure
 
-<!-- ```
+```
 employee-automation-kit/
 ├── main.py
 ├── .env.example
@@ -56,7 +56,7 @@ employee-automation-kit/
 │       ├── onboard.html
 │       ├── bulk_upload.html
 │       └── bulk_results.html
-``` -->
+```
 
 ---
 
