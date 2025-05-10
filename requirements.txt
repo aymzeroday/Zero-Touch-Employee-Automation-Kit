@@ -1,13 +1,16 @@
-# Azure + Google APIs
-msal
+# Core
 requests
 python-dotenv
+colorama
 
-# Google Workspace SDK
+# Azure
+msal
+
+# Google Workspace
 google-api-python-client
 google-auth
 google-auth-httplib2
 google-auth-oauthlib
 
-# Utility
-colorama
+# Flask Dashboard
+flask

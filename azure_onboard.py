@@ -78,9 +78,9 @@ def get_user_manager(upn):
     return None
 
 if __name__ == "__main__":
-    display_name = input("Enter full name: ")
-    username = input("Enter username (without domain): ")
-    domain = input("Enter domain (e.g. example.com): ")
+    display_name = os.getenv("ONBOARD_NAME") or input("Enter full name: ")
+    username = os.getenv("ONBOARD_USERNAME") or input("Enter username (without domain): ")
+    domain = os.getenv("ONBOARD_DOMAIN") or input("Enter domain (e.g. example.com): ")
     user_principal_name = f"{username}@{domain}"
 
     print("Creating user...")

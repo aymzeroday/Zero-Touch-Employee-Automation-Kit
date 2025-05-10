@@ -3,6 +3,7 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from dotenv import load_dotenv
 from notifier import notify_all
+import os
 
 load_dotenv()
 
@@ -43,6 +44,6 @@ def create_google_user(full_name, username):
     notify_all(f"✅ GWS user onboarded: *{full_name}* ({email})")
 
 if __name__ == "__main__":
-    full_name = input("Full Name: ")
-    username = input("Username (without domain): ")
+    full_name = os.getenv("ONBOARD_NAME") or input("Enter full name: ")
+    username = os.getenv("ONBOARD_USERNAME") or input("Enter username (without domain): ")
     create_google_user(full_name, username)

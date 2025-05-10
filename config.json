@@ -1,7 +1,7 @@
 {
-  "default_password": "TempPass@123",
-  "groups": ["azure-group-id-1", "azure-group-id-2"],
-  "license_sku_id": "azure-license-guid",
+  "default_password": "Temp@123",
+  "groups": ["azure-group-1", "azure-group-2"],
+  "license_sku_id": "azure-sku-guid",
   "logo_url": "https://yourcompany.com/logo.png",
 
   "google_service_account_file": "credentials.json",
