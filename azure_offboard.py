@@ -1,9 +1,10 @@
 import os
 import requests
+import json
 from msal import ConfidentialClientApplication
 from dotenv import load_dotenv
 from email_notify import send_email, render_template
-import json
+from notifier import notify_all
 
 load_dotenv()
 
@@ -87,7 +88,7 @@ if __name__ == "__main__":
     user_id = get_user_id(upn)
     remove_from_all_groups(user_id)
 
-    print("Sending exit notification...")
+    print("Sending exit email...")
     html = render_template("templates/exit_email.html", {
         "upn": upn,
         "logo_url": CONFIG["logo_url"]
@@ -98,5 +99,8 @@ if __name__ == "__main__":
     manager_email = get_user_manager(upn)
     if manager_email:
         send_email(manager_email, f"{upn} offboarded", html)
+
+    print("Notifying Slack/Teams...")
+    notify_all(f"⚠️ User offboarded: *{upn}*")
 
     print("✅ Offboarding complete.")

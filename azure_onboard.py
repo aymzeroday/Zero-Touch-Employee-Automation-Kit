@@ -4,6 +4,7 @@ import requests
 from msal import ConfidentialClientApplication
 from dotenv import load_dotenv
 from email_notify import send_email, render_template
+from notifier import notify_all
 
 load_dotenv()
 
@@ -105,5 +106,8 @@ if __name__ == "__main__":
     manager_email = get_user_manager(user_principal_name)
     if manager_email:
         send_email(manager_email, f"{display_name} has joined your team", html)
+
+    print("Notifying Slack/Teams...")
+    notify_all(f"✅ User onboarded: *{display_name}* ({user_principal_name})")
 
     print("✅ Onboarding complete.")

@@ -1,4 +1,13 @@
+# Azure + Google APIs
 msal
 requests
 python-dotenv
+
+# Google Workspace SDK
+google-api-python-client
+google-auth
+google-auth-httplib2
+google-auth-oauthlib
+
+# Utility
 colorama

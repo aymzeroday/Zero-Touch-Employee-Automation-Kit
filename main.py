@@ -2,7 +2,7 @@ import os
 import subprocess
 import argparse
 import datetime
-from colorama import init, Fore, Style
+from colorama import init, Fore
 
 # Init colorama for Windows
 init(autoreset=True)
@@ -28,14 +28,17 @@ def run_script(script_name):
 
 def menu():
     print(Fore.CYAN + "\n=== Zero-Touch Employee Automation Kit ===\n")
-    print(Fore.WHITE + "[1] Onboard new user")
-    print("[2] Offboard user")
-    print("[3] Exit\n")
+    print(Fore.WHITE + "[1] Onboard user (Azure AD)")
+    print("[2] Offboard user (Azure AD)")
+    print("[3] Onboard user (Google Workspace)")
+    print("[4] Offboard user (Google Workspace)")
+    print("[5] Exit\n")
     return input("Choose an option: ").strip()
 
 def handle_cli_args():
     parser = argparse.ArgumentParser(description="Employee Automation CLI")
-    parser.add_argument("--bulk", choices=["onboard", "offboard"], help="Run bulk operation via CSV")
+    parser.add_argument("--bulk", choices=["onboard", "offboard", "google_onboard", "google_offboard"],
+                        help="Run bulk operation via CSV")
     return parser.parse_args()
 
 def bulk_handler(mode):
@@ -62,6 +65,10 @@ if __name__ == "__main__":
         elif choice == "2":
             run_script("azure_offboard.py")
         elif choice == "3":
+            run_script("google_onboard.py")
+        elif choice == "4":
+            run_script("google_offboard.py")
+        elif choice == "5":
             print(Fore.BLUE + "👋 Exiting. Goodbye.")
             break
         else:
